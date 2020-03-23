@@ -19,6 +19,13 @@ public class DataUtility {
         return restaurants;
     }
 
+    //TO-DO: Add 8 more restaurants
+    //--> Middle-Eastern: Watsup Brothers, El-Jannahs - Punchbowl
+    //--> Thai: It's Time for Thai
+    //--> Japanese: Manpuku Ramen - Kingsford, Sakura Fresh Sushi
+    //--> Korean: Red Pepper Bistro, Jang Ta Bal
+    //--> Vietnamese: Marrickville Pork Roll
+
     //The following methods return a certain restaurant
     public static Restaurant getHolyHeffas() {
         String name = "Holy Heffas";
@@ -50,7 +57,7 @@ public class DataUtility {
         cuisine.add("American");
         cuisine.add("Burgers");
         cuisine.add("Bar (18+)");
-        String suburb = "Newtown NSW 2042";
+        String suburb = "Newtown, NSW 2042";
         String desc = "Craft beer and burgers in a rustic bar with timber decor, a mezzanine and a " +
                 "rock 'n' roll vibe.\n\nNOTE: To enter this premises you need to be 18+ or be " +
                 "accompanied by a legal guardian.";
