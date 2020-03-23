@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 23/03/20 8:31 PM.
- * This is an academic project completed as part of the UNSW course INFS3617.
+ * Created by Khang Bui (z5209606) on 23/03/20 9:30 PM.
+ * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 23/03/20 8:31 PM.
+ * Last modified 23/03/20 9:25 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -119,7 +119,7 @@ public class Restaurant {
     }
 
     /**
-     * Use this instead of getWebsite() --> More aesthetics
+     * Use this instead of getWebsite() --> Makes text more aesthetics
      * @return a formatted version of the website attribute for TextView to use
      */
     public String getFormattedLink() {
