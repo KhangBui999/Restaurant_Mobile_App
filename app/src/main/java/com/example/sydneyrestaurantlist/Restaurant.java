@@ -128,6 +128,11 @@ public class Restaurant {
         return list;
     }
 
+    public String getFormattedAddress() {
+        int i = address.indexOf(',');
+        return this.address.substring(0, i+1) + "\n" + this.address.substring(i+2);
+    }
+
     /**
      * Use this instead of getWebsite() --> Makes text more aesthetics
      * @return a formatted version of the website attribute for TextView to use
@@ -144,6 +149,8 @@ public class Restaurant {
      */
     public String getDial() {
         String result = phone.replaceAll("\\s", "");
+        result.replaceAll("\\(","");
+        result.replaceAll("\\)", "");
         return "tel:" + result;
     }
 

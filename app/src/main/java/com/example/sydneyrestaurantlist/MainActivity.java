@@ -8,6 +8,8 @@
 package com.example.sydneyrestaurantlist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,33 +18,37 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mBtn;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBtn = findViewById(R.id.btn);
+        getSupportActionBar().setTitle("Sydney Restaurants Guide");
 
-        mBtn.setOnClickListener(new View.OnClickListener() {
+        mRecyclerView = findViewById(R.id.rvList);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        RestaurantAdapter.RecyclerViewClickListener listener = new RestaurantAdapter.RecyclerViewClickListener() {
             @Override
-            public void onClick(View v) {
-
+            public void onClick(View view, int position) {
+                launchDetailActivity(position);
             }
-        });
+        };
 
-        mBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchDetailActivity();
-            }
-        });
+        mAdapter = new RestaurantAdapter(DataUtility.getRestaurantList(), listener);
+        mRecyclerView.setAdapter(mAdapter);
+
     }
 
-    private void launchDetailActivity() {
+    private void launchDetailActivity(int position) {
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("NAME", "Holy Heffas");
+        intent.putExtra("POSITION", position);
         startActivity(intent);
     }
 }

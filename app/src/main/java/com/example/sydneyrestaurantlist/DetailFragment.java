@@ -45,10 +45,9 @@ public class DetailFragment extends Fragment {
 
         //Retrieves arguments from the FragmentManager in DetailActivity
         Bundle arguments = getArguments();
-        String name = arguments.getString("NAME");
+        int position = arguments.getInt("POSITION");
 
-        DataUtility du = new DataUtility(); //Creates a DataUtility class to use utility methods
-        final Restaurant restaurant = du.searchRestaurant(name); //searches for restaurant based on name
+        final Restaurant restaurant = DataUtility.getRestaurantList().get(position);
 
         //Links XML elements to their respective control variable
         mImage = v.findViewById(R.id.imageView);
@@ -71,7 +70,7 @@ public class DetailFragment extends Fragment {
         mCuisine.setText(restaurant.listCuisine());
         mLocation.setText(restaurant.getSuburb());
         mDesc.setText(restaurant.getDesc());
-        mAddress.setText(restaurant.getAddress());
+        mAddress.setText(restaurant.getFormattedAddress());
         mPhone.setText(restaurant.getPhone());
         mWebsite.setText(restaurant.getFormattedLink());
 
@@ -102,6 +101,7 @@ public class DetailFragment extends Fragment {
         return v;
     }
 
+    //Launches Map
     private void launchMap(String address) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q="+address));
         startActivity(intent);

@@ -12,18 +12,15 @@ import java.util.ArrayList;
 //Utility class to manage restaurant data
 public class DataUtility {
 
-    //Empty constructor class because needed methods aren't static
-    public DataUtility() {
-    }
-
-    public ArrayList<Restaurant> getRestaurantList() {
+    public static ArrayList<Restaurant> getRestaurantList() {
         ArrayList<Restaurant> restaurants = new ArrayList();
         restaurants.add(getHolyHeffas());
+        restaurants.add(getMarysNewtown());
         return restaurants;
     }
 
     //The following methods return a certain restaurant
-    public Restaurant getHolyHeffas() {
+    public static Restaurant getHolyHeffas() {
         String name = "Holy Heffas";
         int ivId = R.drawable.holyheffa;
         float rating = 4.8f;
@@ -44,8 +41,27 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
+    public static Restaurant getMarysNewtown() {
+        String name = "Mary's Newtown";
+        int ivId = R.drawable.marysnewtown;
+        float rating = 4.4f;
+        ArrayList<String> cuisine = new ArrayList();
+        cuisine.add("$$");
+        cuisine.add("American");
+        cuisine.add("Burgers");
+        cuisine.add("Bar (18+)");
+        String suburb = "Newtown NSW 2042";
+        String desc = "Craft beer and burgers in a rustic bar with timber decor, a mezzanine and a " +
+                "rock 'n' roll vibe.\n\nNOTE: To enter this premises you need to be 18+ or be " +
+                "accompanied by a legal guardian.";
+        String address = "6 Mary St, Newtown NSW 2042";
+        String phone = "(02) 9002 0683";
+        String website = "https://www.marys69.com/#/newtown/";
+        return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
+    }
+
     //Searches ArrayList and returns a restaurant based on name result
-    public Restaurant searchRestaurant(String name) {
+    public static Restaurant searchRestaurant(String name) {
         ArrayList<Restaurant> restaurants = getRestaurantList();
         Restaurant result = null;
         for (Restaurant restaurant : restaurants) {

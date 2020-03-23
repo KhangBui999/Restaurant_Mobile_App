@@ -24,8 +24,9 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         Intent intent = getIntent();
-        String name = intent.getStringExtra("NAME");
+        int position = intent.getIntExtra("POSITION", 0);
 
+        getSupportActionBar().setTitle(DataUtility.getRestaurantList().get(position).getName());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
 
         //Manages the fragment for DetailActivity
@@ -33,7 +34,7 @@ public class DetailActivity extends AppCompatActivity {
         FragmentTransaction myTransaction = myManager.beginTransaction();
         Fragment myFragment = new DetailFragment();
         Bundle arguments = new Bundle();
-        arguments.putString("NAME", name);
+        arguments.putInt("POSITION", position);
         myFragment.setArguments(arguments);
         myTransaction.replace(R.id.scrollView, myFragment);
         myTransaction.commit();
