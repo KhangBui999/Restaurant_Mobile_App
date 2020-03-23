@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Khang Bui (z5209606) on 23/03/20 8:31 PM.
+  ~ This is an academic project completed as part of the UNSW course INFS3617.
+  ~ Copyright (c) 2020. All rights reserved.
+  ~ Last modified 23/03/20 7:15 PM.
+  -->
+
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:fontProviderAuthority="com.google.android.gms.fonts"
+        app:fontProviderPackage="com.google.android.gms"
+        app:fontProviderQuery="Roboto"
+        app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
+</font-family>

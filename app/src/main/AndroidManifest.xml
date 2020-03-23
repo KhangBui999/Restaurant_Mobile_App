@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Khang Bui (z5209606) on 23/03/20 8:31 PM.
+  ~ This is an academic project completed as part of the UNSW course INFS3617.
+  ~ Copyright (c) 2020. All rights reserved.
+  ~ Last modified 23/03/20 7:15 PM.
+  -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sydneyrestaurantlist">
 
@@ -9,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".DetailActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,6 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
