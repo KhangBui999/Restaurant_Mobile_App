@@ -7,6 +7,8 @@
 
 package com.example.sydneyrestaurantlist;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -46,7 +48,7 @@ public class DetailFragment extends Fragment {
         String name = arguments.getString("NAME");
 
         DataUtility du = new DataUtility(); //Creates a DataUtility class to use utility methods
-        Restaurant restaurant = du.searchRestaurant(name); //searches for restaurant based on name
+        final Restaurant restaurant = du.searchRestaurant(name); //searches for restaurant based on name
 
         //Links XML elements to their respective control variable
         mImage = v.findViewById(R.id.imageView);
@@ -73,6 +75,47 @@ public class DetailFragment extends Fragment {
         mPhone.setText(restaurant.getPhone());
         mWebsite.setText(restaurant.getFormattedLink());
 
+        //sets an onClick for the map app launch with marker pointing to location
+        mAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchMap(restaurant.getAddress());
+            }
+        });
+
+        //sets an onClick for the phone text to have a the number entered in the Phone app
+        mPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchPhoneDial(restaurant.getDial());
+            }
+        });
+
+        //sets an onClick for the website text to open the specified website link
+        mWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchWebsite(restaurant.getWebsite());
+            }
+        });
+
         return v;
+    }
+
+    private void launchMap(String address) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q="+address));
+        startActivity(intent);
+    }
+
+    //Enters number into dial
+    private void launchPhoneDial(String number) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(number));
+        startActivity(intent);
+    }
+
+    //Launches website link
+    private void launchWebsite(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 }

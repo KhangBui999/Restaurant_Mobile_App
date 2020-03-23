@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("NAME");
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
 
         //Manages the fragment for DetailActivity
         FragmentManager myManager = getSupportFragmentManager();
@@ -39,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
         myTransaction.commit();
     }
 
+    //Allows the back button to navigate to the previous Activity
     @Override
     public boolean onSupportNavigateUp(){
         finish();

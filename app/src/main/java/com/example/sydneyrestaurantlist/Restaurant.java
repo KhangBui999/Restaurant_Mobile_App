@@ -143,7 +143,8 @@ public class Restaurant {
      * @return a value to activate a phone dial Intent
      */
     public String getDial() {
-        return "tel:" + phone.replaceAll("\\s", "");
+        String result = phone.replaceAll("\\s", "");
+        return "tel:" + result;
     }
 
 }
