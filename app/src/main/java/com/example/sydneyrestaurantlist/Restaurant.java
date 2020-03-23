@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 23/03/20 9:30 PM.
+ * Created by Khang Bui (z5209606) on 24/03/20 12:11 AM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 23/03/20 9:25 PM.
+ * Last modified 23/03/20 11:37 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -14,6 +14,7 @@ public class Restaurant {
 
     //Attributes
     private String name;
+    private int ivId;
     private float rating;
     private ArrayList<String> cuisine;
     private String suburb;
@@ -23,9 +24,10 @@ public class Restaurant {
     private String website;
 
     //Constructor class
-    public Restaurant(String name, float rating, ArrayList<String> cuisine, String suburb,
+    public Restaurant(String name, int ivId, float rating, ArrayList<String> cuisine, String suburb,
                       String desc, String address, String phone, String website) {
         this.name = name;
+        this.ivId = ivId;
         this.rating = rating;
         this.cuisine = cuisine;
         this.suburb = suburb;
@@ -42,6 +44,14 @@ public class Restaurant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getIvId() {
+        return ivId;
+    }
+
+    public void setIvId(int ivId) {
+        this.ivId = ivId;
     }
 
     public float getRating() {
@@ -109,10 +119,10 @@ public class Restaurant {
         String list = "";
         for(String type : this.cuisine) {
             if(type.equals(this.cuisine.get(0))) {
-                list.concat(type);
+                list += type;
             }
             else {
-                list.concat(" | " + type);
+                list += " | " + type;
             }
         }
         return list;
@@ -125,7 +135,7 @@ public class Restaurant {
     public String getFormattedLink() {
         int i = this.website.indexOf(':');
         int k = this.website.indexOf('/', 9);
-        return website.substring(i+1, k);
+        return website.substring(i+3, k);
     }
 
     /**
