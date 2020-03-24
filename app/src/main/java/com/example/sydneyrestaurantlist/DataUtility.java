@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 12:11 AM.
+ * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 23/03/20 11:46 PM.
+ * Last modified 24/03/20 1:07 PM.
  */
 
 package com.example.sydneyrestaurantlist;

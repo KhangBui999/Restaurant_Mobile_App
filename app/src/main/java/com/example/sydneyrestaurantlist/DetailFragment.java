@@ -1,13 +1,15 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 12:11 AM.
+ * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 23/03/20 11:34 PM.
+ * Last modified 24/03/20 6:32 PM.
  */
 
 package com.example.sydneyrestaurantlist;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -61,8 +63,15 @@ public class DetailFragment extends Fragment {
         mPhone = v.findViewById(R.id.tv_phone);
         mWebsite = v.findViewById(R.id.tv_website);
 
+        //Bitmap enables the efficient loading of images into the ImageView
+        //Used as a fix for devices running on older hardware
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inScaled = false;
+        Bitmap source = BitmapFactory.decodeResource(mImage.getResources(),
+                restaurant.getIvId(), options); //gets a scaled down Bitmap
+
         //Sets the values of the XML element
-        mImage.setImageResource(restaurant.getIvId()); //sets image resource based on Id number
+        mImage.setImageBitmap(source); //sets image resource based on Id number
         mName.setText(restaurant.getName());
         mRatingBar.setRating(restaurant.getRating()); //sets rating value
         mRatingBar.setStepSize(0.1f); //sets how filled the bar is

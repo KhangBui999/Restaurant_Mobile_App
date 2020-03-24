@@ -1,12 +1,15 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 2:29 AM.
+ * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 24/03/20 2:29 AM.
+ * Last modified 24/03/20 6:31 PM.
  */
 
 package com.example.sydneyrestaurantlist;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import static android.graphics.Bitmap.createScaledBitmap;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestViewHolder> {
     private ArrayList<Restaurant> mRestaurants;
@@ -44,12 +49,12 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             super(v);
             mListener = listener;
             v.setOnClickListener(this);
-            mImage = v.findViewById(R.id.imageView2);
             mName = v.findViewById(R.id.tv_name2);
             mCuisine = v.findViewById(R.id.tv_cuisine2);
             mLocation = v.findViewById(R.id.tv_location2);
             mRating = v.findViewById(R.id.tv_rating2);
             mRateBar = v.findViewById(R.id.ratingBar2);
+            mImage = v.findViewById(R.id.imageView2);
         }
 
         //onClick method from RecyclerViewClickListener interface
@@ -68,7 +73,16 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public void onBindViewHolder(RestViewHolder holder, int position) {
         Restaurant restaurant = mRestaurants.get(position);
-        holder.mImage.setImageResource(restaurant.getIvId());
+
+        //Bitmap enables the efficient loading of images into the ImageView
+        //Used as a fix for devices running on older hardware
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inScaled = false;
+        Bitmap source = BitmapFactory.decodeResource(holder.mImage.getResources(),
+                restaurant.getIvId(), options); //gets a scaled down Bitmap
+
+        //Changes the elements of the holder view
+        holder.mImage.setImageBitmap(source);
         holder.mName.setText(restaurant.getName());
         holder.mCuisine.setText(restaurant.listCuisine());
         holder.mLocation.setText(restaurant.getSuburb());

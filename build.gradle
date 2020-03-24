@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 12:11 AM.
+ * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 23/03/20 9:30 PM.
+ * Last modified 24/03/20 5:10 PM.
  */
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -14,7 +14,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.1'
         
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
