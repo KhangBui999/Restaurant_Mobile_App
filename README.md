@@ -1,12 +1,13 @@
 # Sydney_Foodie_App
-A mobile app that acts as a restaurant guide for Sydney.
-Completed as part of the INFS3634 course at UNSW.
+A mobile app that acts as a restaurant guide for Sydney.</br>
+Completed as part of the INFS3634 course at UNSW.</br>
+</br>
+<h2>Application Features</h2></br>
+<h3>Basic Required Features</h3></br>
 
-##Application Features
-###Basic Required Features
-*RecyclerView containing Restaurants with relevant info e.g. name, cuisine, location & rating
+* RecyclerView containing Restaurants with relevant info e.g. name, cuisine, location & rating</br>
+</br>
+<h3>Additional Feature</h3></br>
 
-###Additional Feature
-*DetailActivity containing required info + additional info such as address, phone num & website
-
-*Additional info are clickable and activate Map, Dial and Website Intents
+* DetailActivity containing required info + additional info such as address, phone num & website
+* Additional info are clickable and activate Map, Dial and Website Intents
