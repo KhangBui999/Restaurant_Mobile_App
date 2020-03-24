@@ -6,8 +6,7 @@ Completed as part of the INFS3634 course at UNSW.</br>
 <b>Basic Required Features</b></br></br>
 
 * RecyclerView containing Restaurants with relevant info e.g. name, cuisine, location & rating
-
+</br>
 <b>Additional Feature</b></br>
 
-* DetailActivity containing required info + additional info such as address, phone num & website
-* Additional info are clickable and activate Map, Dial and Website Intents
+* TBD
