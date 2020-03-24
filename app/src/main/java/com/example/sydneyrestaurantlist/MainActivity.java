@@ -27,13 +27,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Changes title of the action bar
         getSupportActionBar().setTitle("Sydney Restaurants Guide");
 
+        //Manages layout of rvList
         mRecyclerView = findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        //Creates a new RecyclerViewClickListener
         RestaurantAdapter.RecyclerViewClickListener listener = new RestaurantAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -41,11 +44,13 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+        //Displays a the full restaurant list with the above RecyclerViewClickListener
         mAdapter = new RestaurantAdapter(DataUtility.getRestaurantList(), listener);
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
+    //Launches detail activity
     private void launchDetailActivity(int position) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("POSITION", position);
