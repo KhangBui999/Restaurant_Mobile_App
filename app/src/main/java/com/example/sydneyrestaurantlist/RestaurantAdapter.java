@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
+ * Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 24/03/20 6:31 PM.
+ * Last modified 24/03/20 6:33 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -10,6 +10,7 @@ package com.example.sydneyrestaurantlist;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         //onClick method from RecyclerViewClickListener interface
         @Override
-        public void onClick(View view) { mListener.onClick(view, getAdapterPosition()); }
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
+        }
     }
 
     //Creates RestViewHolder (layout object) and sets it
@@ -74,7 +77,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     public void onBindViewHolder(RestViewHolder holder, int position) {
         Restaurant restaurant = mRestaurants.get(position);
 
-        //Bitmap enables the efficient loading of images into the ImageView
+        //Bitmap enables the efficient loading of images into the ImageView by scaling down image resources
         //Used as a fix for devices running on older hardware
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inScaled = false;
@@ -89,10 +92,20 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         holder.mRating.setText(String.format("%,.1f", restaurant.getRating()));
         holder.mRateBar.setRating(restaurant.getRating()); //sets rating value
         holder.mRateBar.setStepSize(0.1f); //sets how filled the bar is
+
+        //Code checks if version is Lollipop or later for animation compatibility
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            holder.mImage.setTransitionName("transition" + position);
+
+        }
+
+
     }
 
     //Needed for RecyclerView
     @Override
-    public int getItemCount() { return mRestaurants.size(); }
+    public int getItemCount() {
+        return mRestaurants.size();
+    }
 
 }

@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
+ * Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 24/03/20 3:15 AM.
+ * Last modified 24/03/20 6:33 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int position = intent.getIntExtra("POSITION", 0);
 
-        getSupportActionBar().setTitle(DataUtility.getRestaurantList().get(position).getName());
+        getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
 
         //Manages the fragment for DetailActivity
@@ -35,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
         Fragment myFragment = new DetailFragment();
         Bundle arguments = new Bundle();
         arguments.putInt("POSITION", position);
+        arguments.putString("TRANSITION", "transition" + position);
         myFragment.setArguments(arguments);
         myTransaction.replace(R.id.scrollView, myFragment);
         myTransaction.commit();

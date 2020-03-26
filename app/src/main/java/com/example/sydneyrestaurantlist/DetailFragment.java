@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
+ * Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 24/03/20 6:32 PM.
+ * Last modified 24/03/20 6:44 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -11,10 +11,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,17 +26,6 @@ import android.widget.TextView;
 
 
 public class DetailFragment extends Fragment {
-
-    private ImageView mImage;
-    private TextView mName;
-    private RatingBar mRatingBar;
-    private TextView mRating;
-    private TextView mCuisine;
-    private TextView mLocation;
-    private TextView mDesc;
-    private TextView mAddress;
-    private TextView mPhone;
-    private TextView mWebsite;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -48,20 +39,21 @@ public class DetailFragment extends Fragment {
         //Retrieves arguments from the FragmentManager in DetailActivity
         Bundle arguments = getArguments();
         int position = arguments.getInt("POSITION");
+        String transitionName = arguments.getString("TRANSITION");
 
         final Restaurant restaurant = DataUtility.getRestaurantList().get(position);
 
         //Links XML elements to their respective control variable
-        mImage = v.findViewById(R.id.imageView);
-        mName = v.findViewById(R.id.tv_name);
-        mRatingBar = v.findViewById(R.id.ratingBar);
-        mRating = v.findViewById(R.id.tv_rating);
-        mCuisine = v.findViewById(R.id.tv_cuisine);
-        mLocation = v.findViewById(R.id.tv_location);
-        mDesc = v.findViewById(R.id.tv_desc);
-        mAddress = v.findViewById(R.id.tv_address);
-        mPhone = v.findViewById(R.id.tv_phone);
-        mWebsite = v.findViewById(R.id.tv_website);
+        ImageView mImage = v.findViewById(R.id.imageView);
+        TextView mName = v.findViewById(R.id.tv_name);
+        RatingBar mRatingBar = v.findViewById(R.id.ratingBar);
+        TextView mRating = v.findViewById(R.id.tv_rating);
+        TextView mCuisine = v.findViewById(R.id.tv_cuisine);
+        TextView mLocation = v.findViewById(R.id.tv_location);
+        TextView mDesc = v.findViewById(R.id.tv_desc);
+        TextView mAddress = v.findViewById(R.id.tv_address);
+        TextView mPhone = v.findViewById(R.id.tv_phone);
+        TextView mWebsite = v.findViewById(R.id.tv_website);
 
         //Bitmap enables the efficient loading of images into the ImageView
         //Used as a fix for devices running on older hardware

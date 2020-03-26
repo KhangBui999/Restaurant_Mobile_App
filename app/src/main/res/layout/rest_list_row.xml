@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
+  ~ Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
   ~ This is an academic project completed as part of the UNSW course, INFS3634.
   ~ Copyright (c) 2020. All rights reserved.
-  ~ Last modified 24/03/20 3:59 AM.
+  ~ Last modified 24/03/20 6:33 PM.
   -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,6 +26,7 @@
             android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            android:transitionName="transition_explode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

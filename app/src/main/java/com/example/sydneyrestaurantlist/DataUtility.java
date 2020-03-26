@@ -1,8 +1,8 @@
 /*
- * Created by Khang Bui (z5209606) on 24/03/20 6:33 PM.
+ * Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
  * This is an academic project completed as part of the UNSW course, INFS3634.
  * Copyright (c) 2020. All rights reserved.
- * Last modified 24/03/20 1:07 PM.
+ * Last modified 24/03/20 6:44 PM.
  */
 
 package com.example.sydneyrestaurantlist;
@@ -28,7 +28,7 @@ public class DataUtility {
     }
 
     //The following methods return a certain restaurant
-    public static Restaurant getHolyHeffas() {
+    private static Restaurant getHolyHeffas() {
         String name = "Holy Heffas";
         int ivId = R.drawable.holyheffa;
         float rating = 4.2f;
@@ -49,7 +49,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getMarysNewtown() {
+    private static Restaurant getMarysNewtown() {
         String name = "Mary's Newtown";
         int ivId = R.drawable.marysnewtown;
         float rating = 4.4f;
@@ -57,7 +57,6 @@ public class DataUtility {
         cuisine.add("$$");
         cuisine.add("American");
         cuisine.add("Burgers");
-        cuisine.add("Bar (18+)");
         String suburb = "Newtown, NSW 2042";
         String desc = "Craft beer and burgers in a rustic bar with timber decor, a mezzanine and a " +
                 "rock 'n' roll vibe.";
@@ -67,7 +66,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getWatsupBrothers() {
+    private static Restaurant getWatsupBrothers() {
         String name = "Watsup Brothers";
         int ivId = R.drawable.watsupbrothers;
         float rating = 4.5f;
@@ -83,7 +82,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getElJannahs() {
+    private static Restaurant getElJannahs() {
         String name = "El Jannahs - Punchbowl";
         int ivId = R.drawable.eljannahs;
         float rating = 4.3f;
@@ -100,7 +99,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getTFT() {
+    private static Restaurant getTFT() {
         String name = "It's Time for Thai";
         int ivId = R.drawable.tft;
         float rating = 4.8f;
@@ -117,7 +116,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getManpuku() {
+    private static Restaurant getManpuku() {
         String name = "Manpuku Ramen";
         int ivId = R.drawable.manpuku;
         float rating = 4.4f;
@@ -134,7 +133,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getSakura() {
+    private static Restaurant getSakura() {
         String name = "Sakura Fresh Sushi";
         int ivId = R.drawable.sakura;
         float rating = 4.6f;
@@ -151,7 +150,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getRedPepper() {
+    private static Restaurant getRedPepper() {
         String name = "Red Pepper Bistro";
         int ivId = R.drawable.redpepper;
         float rating = 4.1f;
@@ -168,7 +167,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getJTB() {
+    private static Restaurant getJTB() {
         String name = "Jang Ta Bal";
         int ivId = R.drawable.jtb;
         float rating = 4.5f;
@@ -185,7 +184,7 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    public static Restaurant getPorkRoll() {
+    private static Restaurant getPorkRoll() {
         String name = "Marrickville Pork Roll";
         int ivId = R.drawable.porkroll;
         float rating = 4.7f;

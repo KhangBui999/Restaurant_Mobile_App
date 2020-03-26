@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Khang Bui (z5209606) on 26/03/20 10:14 PM.
+  ~ This is an academic project completed as part of the UNSW course, INFS3634.
+  ~ Copyright (c) 2020. All rights reserved.
+  ~ Last modified 26/03/20 10:14 PM.
+  -->
+
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <changeTransform />
+    <changeBounds />
+</transitionSet>
