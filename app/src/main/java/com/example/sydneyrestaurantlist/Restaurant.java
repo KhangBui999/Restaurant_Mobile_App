@@ -122,7 +122,7 @@ public class Restaurant {
                 list += type;
             }
             else {
-                list += " | " + type;
+                list += " \u00B7 " + type;
             }
         }
         return list;

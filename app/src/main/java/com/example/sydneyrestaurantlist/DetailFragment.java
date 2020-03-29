@@ -17,12 +17,18 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.transition.TransitionInflater;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+
+import java.util.ArrayList;
 
 
 public class DetailFragment extends Fragment {
@@ -48,7 +54,7 @@ public class DetailFragment extends Fragment {
         TextView mName = v.findViewById(R.id.tv_name);
         RatingBar mRatingBar = v.findViewById(R.id.ratingBar);
         TextView mRating = v.findViewById(R.id.tv_rating);
-        TextView mCuisine = v.findViewById(R.id.tv_cuisine);
+        ChipGroup mCuisine = v.findViewById(R.id.cg_cuisine);
         TextView mLocation = v.findViewById(R.id.tv_location);
         TextView mDesc = v.findViewById(R.id.tv_desc);
         TextView mAddress = v.findViewById(R.id.tv_address);
@@ -68,12 +74,20 @@ public class DetailFragment extends Fragment {
         mRatingBar.setRating(restaurant.getRating()); //sets rating value
         mRatingBar.setStepSize(0.1f); //sets how filled the bar is
         mRating.setText(String.format("%,.1f", restaurant.getRating()));
-        mCuisine.setText(restaurant.listCuisine());
         mLocation.setText(restaurant.getSuburb());
         mDesc.setText(restaurant.getDesc());
         mAddress.setText(restaurant.getFormattedAddress());
         mPhone.setText(restaurant.getPhone());
         mWebsite.setText(restaurant.getFormattedLink());
+
+        //Adds chips based on the cuisine ArrayList
+        mCuisine.removeAllViews(); //added to ensure duplication bug
+        ArrayList<String> cuisineList = restaurant.getCuisine();
+        for(String cuisine : cuisineList) {
+            Chip chip = new Chip(getActivity(), null, R.attr.CustomChipChoiceStyle);
+            chip.setText(cuisine);
+            mCuisine.addView(chip);
+        }
 
         //sets an onClick for the map app launch with marker pointing to location
         mAddress.setOnClickListener(new View.OnClickListener() {

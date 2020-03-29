@@ -10,9 +10,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorAccent">#BB86FC</item>
+        <item name="CustomChipChoiceStyle">@style/ChipStyle</item>
         <item name="android:windowContentTransitions">true</item>
     </style>
 
@@ -20,7 +21,19 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowActionBarOverlay">true</item>
         <item name="colorPrimary">@android:color/transparent</item>
+        <item name="CustomChipChoiceStyle">@style/ChipStyle</item>
         <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="ChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">#6200EE</item>
+        <item name="android:textAppearance">@style/ChipText</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="ChipText" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

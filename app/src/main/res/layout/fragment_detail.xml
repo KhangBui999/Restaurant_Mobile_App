@@ -20,7 +20,6 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@android:drawable/screen_background_light_transparent"
-        android:transitionName="transition_explode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,9 +43,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:progressTint="@android:color/holo_green_dark"
-        android:progressBackgroundTint="@android:color/holo_green_dark"
-        android:backgroundTint="@android:color/holo_green_dark"
+        android:progressTint="#3700B3"
+        android:progressBackgroundTint="#3700B3"
+        android:backgroundTint="#3700B3"
         android:secondaryProgressTint="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -57,23 +56,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto_bold"
+        android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
         app:layout_constraintStart_toEndOf="@+id/ratingBar"
         app:layout_constraintTop_toTopOf="@+id/ratingBar" />
-
-    <TextView
-        android:id="@+id/tv_cuisine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto"
-        android:textColor="@android:color/secondary_text_light"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <TextView
         android:id="@+id/tv_location"
@@ -82,10 +69,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_cuisine" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <View
         android:id="@+id/view_line1"
@@ -97,7 +84,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+        app:layout_constraintTop_toBottomOf="@+id/hsv_chips" />
 
     <TextView
         android:id="@+id/tv_desc"
@@ -205,5 +192,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_website"/>
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_chips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_cuisine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"></com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

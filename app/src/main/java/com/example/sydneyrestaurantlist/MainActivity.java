@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private boolean wideMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

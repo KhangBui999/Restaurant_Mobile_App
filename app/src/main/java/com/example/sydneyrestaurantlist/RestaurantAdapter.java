@@ -11,6 +11,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 
@@ -42,7 +46,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     //Static RestViewHolder class
     public static class RestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView mImage;
-        public TextView mName, mCuisine, mLocation, mRating;
+        public TextView mName, mLocation, mRating;
+        public ChipGroup mCuisine;
         public RatingBar mRateBar;
         public RecyclerViewClickListener mListener;
 
@@ -51,7 +56,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             mListener = listener;
             v.setOnClickListener(this);
             mName = v.findViewById(R.id.tv_name2);
-            mCuisine = v.findViewById(R.id.tv_cuisine2);
+            mCuisine = v.findViewById(R.id.cg_cuisine2);
             mLocation = v.findViewById(R.id.tv_location2);
             mRating = v.findViewById(R.id.tv_rating2);
             mRateBar = v.findViewById(R.id.ratingBar2);
@@ -87,18 +92,19 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         //Changes the elements of the holder view
         holder.mImage.setImageBitmap(source);
         holder.mName.setText(restaurant.getName());
-        holder.mCuisine.setText(restaurant.listCuisine());
         holder.mLocation.setText(restaurant.getSuburb());
         holder.mRating.setText(String.format("%,.1f", restaurant.getRating()));
         holder.mRateBar.setRating(restaurant.getRating()); //sets rating value
         holder.mRateBar.setStepSize(0.1f); //sets how filled the bar is
 
-        //Code checks if version is Lollipop or later for animation compatibility
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            holder.mImage.setTransitionName("transition" + position);
-
+        //Add chips based on cuisine ArrayList
+        holder.mCuisine.removeAllViews(); //needed to resolve duplication bug
+        ArrayList<String> cuisineList = restaurant.getCuisine();
+        for(String cuisine : cuisineList) {
+            Chip chip = new Chip(holder.itemView.getContext(), null, R.attr.CustomChipChoiceStyle);
+            chip.setText(cuisine);
+            holder.mCuisine.addView(chip);
         }
-
 
     }
 
