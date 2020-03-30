@@ -41,6 +41,7 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:stepSize=".1"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:progressTint="#3700B3"

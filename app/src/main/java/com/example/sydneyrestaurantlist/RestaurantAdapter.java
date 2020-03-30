@@ -84,10 +84,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         Bitmap source = BitmapFactory.decodeResource(holder.mImage.getResources(),
                 restaurant.getIvId(), options); //gets a scaled down Bitmap
 
-        //Formats the rating bar and sets stepSize
+        //Formats the rating bar
         holder.mRating.setText(String.format("%,.1f", restaurant.getRating()));
         holder.mRateBar.setRating(restaurant.getRating()); //sets rating value
-        holder.mRateBar.setStepSize(0.1f); //sets how filled the bar is
 
         //Changes the elements of the holder view
         holder.mImage.setImageBitmap(source);

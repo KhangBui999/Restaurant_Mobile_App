@@ -68,7 +68,6 @@ public class DetailFragment extends Fragment {
         mImage.setImageBitmap(source); //sets image resource based on Id number
         mName.setText(restaurant.getName());
         mRatingBar.setRating(restaurant.getRating()); //sets rating value
-        mRatingBar.setStepSize(0.1f); //sets how filled the bar is
         mRating.setText(String.format("%,.1f", restaurant.getRating()));
         mLocation.setText(restaurant.getSuburb());
         mDesc.setText(restaurant.getDesc());
