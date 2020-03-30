@@ -1,6 +1,6 @@
 # Sydney Foodie App
 A mobile app that acts as a restaurant guide for Sydney.</br>
-Completed as part of the INFS3634 course at UNSW.</br>
+Completed as part of the INFS3634 course at UNSW - (zID: z5209606)</br>
 For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) emulator.</br>
 </br>
 <h2>Application Features</h2>
