@@ -23,9 +23,9 @@ For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) e
 * Animations for the RecyclerView when Activity is first open or list is refreshed
 * 'Slide' transition animations for both MainActivity and DetailActivity (handheld only)
 </br>
-<h2>Screenshots</h2>
+<h2>Screenshots</h2></br>
 </br>
-<h2>Notes</h2>
+<h2>Notes</h2></br>
 * RecyclerView, CardView, ChipGroups, Chips, Animations & Transitions require dependencies
 * Animations and transitions do not work before Android 5 (Lollipop)
 * If error occurs, please check build.gradle to check if dependencies are installed
