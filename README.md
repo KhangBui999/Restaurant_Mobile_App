@@ -21,4 +21,11 @@ For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) e
 * Additional options feature (located in MainActivity ActionBar) - opens Sorting dialog
 * Sorting options include by rating or alphabetically (uses QuickSort algorithm)
 * Animations for the RecyclerView when Activity is first open or list is refreshed
-* Transition animations for both MainActivity and DetailActivity (handheld only)
+* 'Slide' transition animations for both MainActivity and DetailActivity (handheld only)
+</br>
+<h2>Screenshots</h2>
+</br>
+<h2>Notes</h2>
+* RecyclerView, CardView, ChipGroups, Chips, Animations & Transitions require dependencies
+* Animations and transitions do not work before Android 5 (Lollipop)
+* If error occurs, please check build.gradle to check if dependencies are installed
