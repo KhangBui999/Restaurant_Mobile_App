@@ -25,7 +25,7 @@ For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) e
 </br>
 <h2>Screenshots</h2></br>
 </br>
-<h2>Notes</h2></br>
+<h2>Notes</h2>
 
 * RecyclerView, CardView, ChipGroups, Chips, Animations & Transitions require dependencies
 * Animations and transitions do not work before Android 5 (Lollipop)
