@@ -78,7 +78,7 @@ public class DetailFragment extends Fragment {
         //Adds chips based on the cuisine ArrayList
         mCuisine.removeAllViews(); //added to ensure duplication bug
         ArrayList<String> cuisineList = restaurant.getCuisine();
-        for(String cuisine : cuisineList) {
+        for (String cuisine : cuisineList) {
             Chip chip = new Chip(getActivity(), null, R.attr.CustomChipChoiceStyle);
             chip.setText(cuisine);
             mCuisine.addView(chip);
@@ -113,7 +113,7 @@ public class DetailFragment extends Fragment {
 
     //Launches Map using the geolocation query
     private void launchMap(String address) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q="+address));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q=" + address));
         startActivity(intent);
     }
 

@@ -33,38 +33,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         mListener = listener;
     }
 
-    //RecyclerViewClick Listener interface
-    public interface RecyclerViewClickListener {
-        void onClick(View view, int position);
-    }
-
-    //Static RestViewHolder class
-    public static class RestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView mImage;
-        private TextView mName, mLocation, mRating;
-        private ChipGroup mCuisine;
-        private RatingBar mRateBar;
-        private RecyclerViewClickListener mListener;
-
-        public RestViewHolder(View v, RecyclerViewClickListener listener) {
-            super(v);
-            mListener = listener;
-            v.setOnClickListener(this);
-            mName = v.findViewById(R.id.tv_name2);
-            mCuisine = v.findViewById(R.id.cg_cuisine2);
-            mLocation = v.findViewById(R.id.tv_location2);
-            mRating = v.findViewById(R.id.tv_rating2);
-            mRateBar = v.findViewById(R.id.ratingBar2);
-            mImage = v.findViewById(R.id.imageView2);
-        }
-
-        //onClick method from RecyclerViewClickListener interface
-        @Override
-        public void onClick(View view) {
-            mListener.onClick(view, getAdapterPosition());
-        }
-    }
-
     //Creates RestViewHolder (layout object) and sets it
     @Override
     public RestaurantAdapter.RestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -96,7 +64,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         //Add chips based on cuisine ArrayList
         holder.mCuisine.removeAllViews(); //needed to resolve duplication bug
         ArrayList<String> cuisineList = restaurant.getCuisine();
-        for(String cuisine : cuisineList) {
+        for (String cuisine : cuisineList) {
             Chip chip = new Chip(holder.itemView.getContext(), null, R.attr.CustomChipChoiceStyle);
             chip.setText(cuisine);
             chip.setClickable(false);
@@ -109,6 +77,38 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
     @Override
     public int getItemCount() {
         return mRestaurants.size();
+    }
+
+    //RecyclerViewClick Listener interface
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
+    }
+
+    //Static RestViewHolder class
+    public static class RestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private ImageView mImage;
+        private TextView mName, mLocation, mRating;
+        private ChipGroup mCuisine;
+        private RatingBar mRateBar;
+        private RecyclerViewClickListener mListener;
+
+        public RestViewHolder(View v, RecyclerViewClickListener listener) {
+            super(v);
+            mListener = listener;
+            v.setOnClickListener(this);
+            mName = v.findViewById(R.id.tv_name2);
+            mCuisine = v.findViewById(R.id.cg_cuisine2);
+            mLocation = v.findViewById(R.id.tv_location2);
+            mRating = v.findViewById(R.id.tv_rating2);
+            mRateBar = v.findViewById(R.id.ratingBar2);
+            mImage = v.findViewById(R.id.imageView2);
+        }
+
+        //onClick method from RecyclerViewClickListener interface
+        @Override
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
+        }
     }
 
 }

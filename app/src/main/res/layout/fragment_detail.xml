@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Created by Khang Bui (z5209606) on 24/03/20 8:15 PM.
   ~ This is an academic project completed as part of the UNSW course, INFS3634.
   ~ Copyright (c) 2020. All rights reserved.
@@ -11,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailFragment" >
+    tools:context=".DetailFragment">
 
     <ImageView
         android:id="@+id/imageView"
@@ -41,13 +40,13 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stepSize=".1"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:progressTint="#3700B3"
-        android:progressBackgroundTint="#3700B3"
         android:backgroundTint="#3700B3"
+        android:progressBackgroundTint="#3700B3"
+        android:progressTint="#3700B3"
         android:secondaryProgressTint="@android:color/transparent"
+        android:stepSize=".1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -110,7 +109,7 @@
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desc"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
     <ImageView
         android:id="@+id/iv_address"
@@ -192,7 +191,7 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_website"/>
+        app:layout_constraintTop_toBottomOf="@+id/iv_website" />
 
     <HorizontalScrollView
         android:id="@+id/hsv_chips"

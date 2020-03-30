@@ -29,13 +29,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    RestaurantAdapter.RecyclerViewClickListener listener;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView mStatus;
     private ArrayList<Restaurant> list;
     private ArrayList<String> nameList;
-    RestaurantAdapter.RecyclerViewClickListener listener;
     private boolean wideMode;
 
     @Override
@@ -47,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Sydney Restaurants Guide");
 
         //Checks if device is in wideMode by seeing if the scrollContainer exists
-        if(findViewById(R.id.scrollContainer) == null){
+        if (findViewById(R.id.scrollContainer) == null) {
             wideMode = false;
-        }
-        else {
+        } else {
             wideMode = true;
         }
 
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         //Retrieves initial ArrayList which is ordered from highest rating
         list = DataUtility.quickSortDescRating(DataUtility.getDefaultList());
         nameList = new ArrayList<>();
-        for(Restaurant r : list) {
+        for (Restaurant r : list) {
             nameList.add(r.getName()); //nameList is required to determine how ArrayList is ordered
         }
 
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         listener = new RestaurantAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                if(wideMode){
+                if (wideMode) {
                     //Tablet (wide mode) has a dual pane view via a fragment in the scrollContainer
                     FragmentManager myManager = getSupportFragmentManager();
                     FragmentTransaction myTransaction = myManager.beginTransaction();
@@ -86,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     myFragment.setArguments(arguments);
                     myTransaction.replace(R.id.scrollContainer, myFragment);
                     myTransaction.commit();
-                }
-                else {
+                } else {
                     //Handheld launches another activity
                     launchDetailActivity(position);
                 }
@@ -151,17 +149,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Todo: for portfolio purposes, clean up refreshList method and improve readability
+
     /**
      * Refreshes adapter ArrayList based on sorting option
+     *
      * @param rbId is the id of the radio button checked
      */
     private void refreshList(int rbId) {
-        switch(rbId){
+        switch (rbId) {
             case R.id.rb_hr:
                 list = new ArrayList<>(); //Clears array list
                 list = DataUtility.quickSortDescRating(DataUtility.getDefaultList());
                 nameList = new ArrayList<>(); //Clears nameList
-                for(Restaurant r : list) {
+                for (Restaurant r : list) {
                     nameList.add(r.getName()); //matches nameList to new ArrayList
                 }
                 mAdapter = new RestaurantAdapter(list, listener); //resets Adapter
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 list = new ArrayList<>();
                 list = DataUtility.quickSortAscRating(DataUtility.getDefaultList());
                 nameList = new ArrayList<>();
-                for(Restaurant r : list) {
+                for (Restaurant r : list) {
                     nameList.add(r.getName());
                 }
                 mAdapter = new RestaurantAdapter(list, listener);

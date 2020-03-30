@@ -111,17 +111,18 @@ public class Restaurant {
     }
 
     //Extra methods for the Restaurant
+
     /**
      * Formats the ArrayList cuisine into a String version that can be used by a TextView
+     *
      * @return a String format of the ArrayList cuisine
      */
     public String listCuisine() {
         String list = "";
-        for(String type : this.cuisine) {
-            if(type.equals(this.cuisine.get(0))) {
+        for (String type : this.cuisine) {
+            if (type.equals(this.cuisine.get(0))) {
                 list += type;
-            }
-            else {
+            } else {
                 list += " \u00B7 " + type;
             }
         }
@@ -130,30 +131,33 @@ public class Restaurant {
 
     /**
      * Shortens the address so it can be presentable e.g. https://www.google.com/ to www.google.com
+     *
      * @return presentable address
      */
     public String getFormattedAddress() {
         int i = address.indexOf(',');
-        return this.address.substring(0, i+1) + "\n" + this.address.substring(i+2);
+        return this.address.substring(0, i + 1) + "\n" + this.address.substring(i + 2);
     }
 
     /**
      * Use this instead of getWebsite() --> Makes text more aesthetics
+     *
      * @return a formatted version of the website attribute for TextView to use
      */
     public String getFormattedLink() {
         int i = this.website.indexOf(':');
         int k = this.website.indexOf('/', 9);
-        return website.substring(i+3, k);
+        return website.substring(i + 3, k);
     }
 
     /**
      * Use this to when creating a phone dial intent
+     *
      * @return a value to activate a phone dial Intent
      */
     public String getDial() {
         String result = phone.replaceAll("\\s", "");
-        result.replaceAll("\\(","");
+        result.replaceAll("\\(", "");
         result.replaceAll("\\)", "");
         return "tel:" + result;
     }

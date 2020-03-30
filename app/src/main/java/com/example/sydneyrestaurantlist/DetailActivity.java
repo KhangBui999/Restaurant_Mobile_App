@@ -47,7 +47,7 @@ public class DetailActivity extends AppCompatActivity {
 
     //Allows the back button to navigate to MainActivity
     @Override
-    public boolean onSupportNavigateUp(){
+    public boolean onSupportNavigateUp() {
         finish(); //finishes Activity and returns to previous Activity i.e. MainActivity
         this.overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out); //transition
         return true;

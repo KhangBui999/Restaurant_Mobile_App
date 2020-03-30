@@ -12,7 +12,11 @@ import java.util.ArrayList;
 //Utility class to manage restaurant data
 public class DataUtility {
 
-    //Default List
+    /**
+     * Use this to get the default list of restaurants. Unfiltered and unordered.
+     *
+     * @return default list of restaurants.
+     */
     public static ArrayList<Restaurant> getDefaultList() {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(getHolyHeffas());
@@ -28,53 +32,59 @@ public class DataUtility {
         return restaurants;
     }
 
-    //Uses QuickSorting algorithm structure to sort parameterised ArrayList from highest to lowest by rating
+
+    /**
+     * Use this to sort a Restaurant ArrayList from highest ratings (descending order).
+     * Uses a QuickSort algorithm to ensure the fastest response time.
+     *
+     * @param restaurants is the ArrayList to be sorted.
+     * @return a RestaurantArrayList sorted in descending order (in terms of ratings).
+     */
     public static ArrayList<Restaurant> quickSortDescRating(ArrayList<Restaurant> restaurants) {
-        if(restaurants.size() <= 1){
+        if (restaurants.size() <= 1) {
             return restaurants; //list does not need to be sorted if there is one item
-        }
-        else {
+        } else {
             ArrayList<Restaurant> smaller = new ArrayList<>();
             ArrayList<Restaurant> greater = new ArrayList<>();
-            Restaurant pivot = restaurants.get(restaurants.size()-1); //pivot item
-            for(int i=0; i < restaurants.size()-1; i++) {
-                if(restaurants.get(i).getRating() > pivot.getRating()){
-                    greater.add(restaurants.get(i));
-                }
-                else {
-                    smaller.add(restaurants.get(i));
+            Restaurant pivot = restaurants.get(restaurants.size() - 1); //pivot item
+            for (int i = 0; i < restaurants.size() - 1; i++) {
+                if (restaurants.get(i).getRating() > pivot.getRating()) {
+                    greater.add(restaurants.get(i)); //item greater than pivot get added to this
+                } else {
+                    smaller.add(restaurants.get(i)); //item smaller than pivot get added to this
                 }
             }
 
             //Recursive sorting
-            greater = quickSortDescRating(greater);
-            smaller = quickSortDescRating(smaller);
+            greater = quickSortDescRating(greater); //repeat method for greater list until 1 item
+            smaller = quickSortDescRating(smaller); //repeat method for smaller list until 1 item
 
-            //Restructures the ArrayList
-            greater.add(pivot);
-            greater.addAll(smaller);
-            return greater;
+            //Restructures the ArrayList - NOTE: greater > pivot > smaller
+            greater.add(pivot); //adds the pivot
+            greater.addAll(smaller); //adds smaller
+            return greater; //return ordered ArrayList
         }
     }
 
-    /*
-    The following sorting methods use the QuickSort algorithm to sort the list with the specified
-    comparator e.g. alphabetical, ascending or descending.
+
+    /**
+     * Use this to sort a Restaurant ArrayList in ascending order (lowest to highest ratings).
+     * Uses a QuickSort algorithm to ensure the fastest response time.
+     *
+     * @param restaurants is the ArrayList to be sorted.
+     * @return a sorted ArrayList ordered by lowest ratings.
      */
-    //Uses QuickSorting algorithm structure to sort parameterised ArrayList from lowest to highest by rating
     public static ArrayList<Restaurant> quickSortAscRating(ArrayList<Restaurant> restaurants) {
-        if(restaurants.size() <= 1){
+        if (restaurants.size() <= 1) {
             return restaurants;
-        }
-        else {
+        } else {
             ArrayList<Restaurant> smaller = new ArrayList<>();
             ArrayList<Restaurant> greater = new ArrayList<>();
-            Restaurant pivot = restaurants.get(restaurants.size()-1); //pivot item
-            for(int i=0; i < restaurants.size()-1; i++) {
-                if(restaurants.get(i).getRating() < pivot.getRating()){
+            Restaurant pivot = restaurants.get(restaurants.size() - 1); //pivot item
+            for (int i = 0; i < restaurants.size() - 1; i++) {
+                if (restaurants.get(i).getRating() < pivot.getRating()) {
                     smaller.add(restaurants.get(i));
-                }
-                else {
+                } else {
                     greater.add(restaurants.get(i));
                 }
             }
@@ -83,14 +93,21 @@ public class DataUtility {
             smaller = quickSortAscRating(smaller);
             greater = quickSortAscRating(greater);
 
-            //Restructures the ArrayList
+            //Restructures the ArrayList - NOTE: smaller > pivot > greater
             smaller.add(pivot);
             smaller.addAll(greater);
             return smaller;
         }
     }
 
-    //Uses QuickSorting algorithm structure to sort parameterised ArrayList reverse alphabetically
+
+    /**
+     * Use this to sort a Restaurant ArrayList reverse alphabetically.
+     * Uses a QuickSort algorithm to ensure the fastest response time.
+     *
+     * @param restaurants is the ArrayList to be sorted.
+     * @return a reverse alphabetical ArrayList.
+     */
     public static ArrayList<Restaurant> quickSortReverseAlpha(ArrayList<Restaurant> restaurants) {
         if (restaurants.size() <= 1) {
             return restaurants;
@@ -125,7 +142,14 @@ public class DataUtility {
         }
     }
 
-    //Uses QuickSort algorithm structure to sort parameterised ArrayList alphabetically
+
+    /**
+     * Use this to sort an ArrayList by alphabetical order.
+     * Uses a QuickSort algorithm to ensure the fastest response time.
+     *
+     * @param restaurants is the ArrayList to be sorted.
+     * @return an alphabetically sorted ArrayList
+     */
     public static ArrayList<Restaurant> quickSortAlpha(ArrayList<Restaurant> restaurants) {
         if (restaurants.size() <= 1) {
             return restaurants;
@@ -334,12 +358,17 @@ public class DataUtility {
         return new Restaurant(name, ivId, rating, cuisine, suburb, desc, address, phone, website);
     }
 
-    //Searches ArrayList and returns a restaurant based on name result
+    /**
+     * Searches ArrayList and returns a restaurant based on name result
+     *
+     * @param name of a restaurant
+     * @return a Restaurant object with the same and exact name of the restaurant
+     */
     public static Restaurant searchRestaurant(String name) {
         ArrayList<Restaurant> restaurants = getDefaultList();
         Restaurant result = null;
         for (Restaurant restaurant : restaurants) {
-            if(restaurant.getName().equals(name)){
+            if (restaurant.getName().equals(name)) {
                 result = restaurant;
                 break;
             }
