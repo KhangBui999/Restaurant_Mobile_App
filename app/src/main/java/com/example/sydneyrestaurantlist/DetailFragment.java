@@ -111,13 +111,13 @@ public class DetailFragment extends Fragment {
         return v;
     }
 
-    //Launches Map
+    //Launches Map using the geolocation query
     private void launchMap(String address) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q="+address));
         startActivity(intent);
     }
 
-    //Enters number into dial
+    //Enters number into dial e.g. tel:000
     private void launchPhoneDial(String number) {
         Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(number));
         startActivity(intent);

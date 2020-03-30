@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity {
         ArrayList<String> nameList = intent.getStringArrayListExtra("NAMES");
 
         //Makes ActionBar transparent
-        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
+        Objects.requireNonNull(getSupportActionBar()).setTitle(null); //sets title as empty
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
 
         //Manages the fragment for DetailActivity
@@ -48,7 +48,7 @@ public class DetailActivity extends AppCompatActivity {
     //Allows the back button to navigate to MainActivity
     @Override
     public boolean onSupportNavigateUp(){
-        finish();
+        finish(); //finishes Activity and returns to previous Activity i.e. MainActivity
         this.overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out); //transition
         return true;
     }

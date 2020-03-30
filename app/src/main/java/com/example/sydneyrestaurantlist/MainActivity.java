@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //Changes title of the action bar
         getSupportActionBar().setTitle("Sydney Restaurants Guide");
 
-        //Checks if device is in wideMode by seeing if the scrollContainer exists (wideMode element only)
+        //Checks if device is in wideMode by seeing if the scrollContainer exists
         if(findViewById(R.id.scrollContainer) == null){
             wideMode = false;
         }
@@ -54,14 +54,15 @@ public class MainActivity extends AppCompatActivity {
             wideMode = true;
         }
 
+        //Sets the status message of how many items were loaded and how it was sorted
         mStatus = findViewById(R.id.subheading);
         mStatus.setText("Showing 10 (of 10) - Sorted By Highest Rating");
 
-        //Retrieves initial ArrayList (no filters)
+        //Retrieves initial ArrayList which is ordered from highest rating
         list = DataUtility.quickSortDescRating(DataUtility.getDefaultList());
         nameList = new ArrayList<>();
         for(Restaurant r : list) {
-            nameList.add(r.getName());
+            nameList.add(r.getName()); //nameList is required to determine how ArrayList is ordered
         }
 
         //Manages layout of rvList
@@ -102,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
     //Launches detail activity
     private void launchDetailActivity(int position) {
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("POSITION", position);
-        intent.putExtra("NAMES", nameList);
+        intent.putExtra("POSITION", position); //needed for position of ArrayList
+        intent.putExtra("NAMES", nameList); //needed for how ArrayList is ordered
         startActivity(intent);
         this.overridePendingTransition(R.anim.push_left_out, R.anim.push_left_in); //transition
     }
@@ -125,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * launchFilterDialog launches a dialog that allows users to adjust sorting options
+     */
     private void launchFilterDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final LayoutInflater inflater = this.getLayoutInflater();
@@ -147,7 +151,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Todo: for portfolio purposes, clean up refreshList method and improve readability
-    //Refreshes RecyclerView when options are applied
+    /**
+     * Refreshes adapter ArrayList based on sorting option
+     * @param rbId is the id of the radio button checked
+     */
     private void refreshList(int rbId) {
         switch(rbId){
             case R.id.rb_hr:

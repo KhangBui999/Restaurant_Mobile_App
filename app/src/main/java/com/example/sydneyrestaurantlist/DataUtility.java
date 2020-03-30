@@ -61,7 +61,6 @@ public class DataUtility {
     The following sorting methods use the QuickSort algorithm to sort the list with the specified
     comparator e.g. alphabetical, ascending or descending.
      */
-
     //Uses QuickSorting algorithm structure to sort parameterised ArrayList from lowest to highest by rating
     public static ArrayList<Restaurant> quickSortAscRating(ArrayList<Restaurant> restaurants) {
         if(restaurants.size() <= 1){

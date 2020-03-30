@@ -14,14 +14,14 @@ public class Restaurant {
 
     //Attributes
     private String name;
-    private int ivId;
-    private float rating;
+    private int ivId; //represents the R.id of the image resource
+    private float rating; //datatype is float to ensure RatingBar works smoothly
     private ArrayList<String> cuisine;
     private String suburb;
     private String desc;
     private String address;
     private String phone;
-    private String website;
+    private String website; //full website address e.g. https//www.google.com/ not www.google.com
 
     //Constructor class
     public Restaurant(String name, int ivId, float rating, ArrayList<String> cuisine, String suburb,
@@ -128,6 +128,10 @@ public class Restaurant {
         return list;
     }
 
+    /**
+     * Shortens the address so it can be presentable e.g. https://www.google.com/ to www.google.com
+     * @return presentable address
+     */
     public String getFormattedAddress() {
         int i = address.indexOf(',');
         return this.address.substring(0, i+1) + "\n" + this.address.substring(i+2);
