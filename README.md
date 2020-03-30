@@ -27,6 +27,7 @@ For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) e
 </br>
 <h2>Notes</h2>
 
+* Using Android Studio 3.6 (may not work on Android Studio 3.5)
 * RecyclerView, CardView, ChipGroups, Chips, Animations & Transitions require dependencies
 * Animations and transitions do not work before Android 5 (Lollipop)
 * If error occurs, please check build.gradle to check if dependencies are installed
