@@ -1,12 +1,24 @@
-# Sydney_Foodie_App
+# Sydney Foodie App
 A mobile app that acts as a restaurant guide for Sydney.</br>
 Completed as part of the INFS3634 course at UNSW.</br>
+For optimal use, please use a Pixel 3 (for handheld) or a Pixel C (for tablet) emulator.</br>
 </br>
 <h2>Application Features</h2>
-<b>Basic Required Features</b></br></br>
+<b>Basic Required Features</b></br>
 
 * RecyclerView containing Restaurants with relevant info e.g. name, cuisine, location & rating
+* DetailView contains relevant information of clicked restaurant with an image
 </br>
-<b>Additional Feature</b></br>
+<b>Additional Features</b></br>
 
-* TBD
+* Supports both handheld and tablet devices
+* RatingBar for both MainActivity and DetailActivity
+* DetailView contains additional information such as address, phone number and website link
+* Clicking address in DetailView opens Google Maps with location specified
+* Clicking phone number in DetailView opens the Phone app with the number in the dial
+* Clicking website link in DetailView opens the page on Google Chrome
+* Back button for DetailActivity
+* Additional options feature (located in MainActivity ActionBar) - opens Sorting dialog
+* Sorting options include by rating or alphabetically (uses QuickSort algorithm)
+* Animations for the RecyclerView when Activity is first open or list is refreshed
+* Transition animations for both MainActivity and DetailActivity (handheld only)
