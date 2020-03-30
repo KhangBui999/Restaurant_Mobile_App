@@ -7,11 +7,6 @@
 
 package com.example.sydneyrestaurantlist;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +17,11 @@ import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -148,6 +147,30 @@ public class MainActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(mAdapter);
                 mRecyclerView.startLayoutAnimation();
                 mStatus.setText("Showing 10 (of 10) - Sorted By Lowest Rating");
+                break;
+            case R.id.rb_az:
+                list = new ArrayList<>();
+                list = DataUtility.quickSortAlpha(DataUtility.getDefaultList());
+                nameList = new ArrayList<>();
+                for (Restaurant r : list) {
+                    nameList.add(r.getName());
+                }
+                mAdapter = new RestaurantAdapter(list, listener);
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.startLayoutAnimation();
+                mStatus.setText("Showing 10 (of 10) - Sorted Alphabetically (A-Z)");
+                break;
+            case R.id.rb_za:
+                list = new ArrayList<>();
+                list = DataUtility.quickSortReverseAlpha(DataUtility.getDefaultList());
+                nameList = new ArrayList<>();
+                for (Restaurant r : list) {
+                    nameList.add(r.getName());
+                }
+                mAdapter = new RestaurantAdapter(list, listener);
+                mRecyclerView.setAdapter(mAdapter);
+                mRecyclerView.startLayoutAnimation();
+                mStatus.setText("Showing 10 (of 10) - Sorted Alphabetically (Z-A)");
                 break;
             default:
                 break;

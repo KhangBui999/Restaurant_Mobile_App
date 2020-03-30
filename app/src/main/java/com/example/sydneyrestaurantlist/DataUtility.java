@@ -7,17 +7,14 @@
 
 package com.example.sydneyrestaurantlist;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 //Utility class to manage restaurant data
 public class DataUtility {
 
     //Default List
     public static ArrayList<Restaurant> getDefaultList() {
-        ArrayList<Restaurant> restaurants = new ArrayList();
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
         restaurants.add(getHolyHeffas());
         restaurants.add(getMarysNewtown());
         restaurants.add(getWatsupBrothers());
@@ -31,7 +28,7 @@ public class DataUtility {
         return restaurants;
     }
 
-    //Uses quick sorting to sort parameterised ArrayList from highest to lowest by rating
+    //Uses QuickSorting algorithm structure to sort parameterised ArrayList from highest to lowest by rating
     public static ArrayList<Restaurant> quickSortDescRating(ArrayList<Restaurant> restaurants) {
         if(restaurants.size() <= 1){
             return restaurants; //list does not need to be sorted if there is one item
@@ -48,6 +45,8 @@ public class DataUtility {
                     smaller.add(restaurants.get(i));
                 }
             }
+
+            //Recursive sorting
             greater = quickSortDescRating(greater);
             smaller = quickSortDescRating(smaller);
 
@@ -58,7 +57,12 @@ public class DataUtility {
         }
     }
 
-    //Uses quick sorting to sort parameterised ArrayList from lowest to highest by rating
+    /*
+    The following sorting methods use the QuickSort algorithm to sort the list with the specified
+    comparator e.g. alphabetical, ascending or descending.
+     */
+
+    //Uses QuickSorting algorithm structure to sort parameterised ArrayList from lowest to highest by rating
     public static ArrayList<Restaurant> quickSortAscRating(ArrayList<Restaurant> restaurants) {
         if(restaurants.size() <= 1){
             return restaurants;
@@ -75,10 +79,82 @@ public class DataUtility {
                     greater.add(restaurants.get(i));
                 }
             }
+
+            //Recursive sorting
             smaller = quickSortAscRating(smaller);
             greater = quickSortAscRating(greater);
 
             //Restructures the ArrayList
+            smaller.add(pivot);
+            smaller.addAll(greater);
+            return smaller;
+        }
+    }
+
+    //Uses QuickSorting algorithm structure to sort parameterised ArrayList reverse alphabetically
+    public static ArrayList<Restaurant> quickSortReverseAlpha(ArrayList<Restaurant> restaurants) {
+        if (restaurants.size() <= 1) {
+            return restaurants;
+        } else {
+            ArrayList<Restaurant> smaller = new ArrayList<>();
+            ArrayList<Restaurant> greater = new ArrayList<>();
+            Restaurant pivot = restaurants.get(restaurants.size() - 1);
+            for (int i = 0; i < restaurants.size() - 1; i++) {
+                boolean unsorted = true;
+                int index = 0;
+                while (unsorted) {
+                    if (restaurants.get(i).getName().charAt(index) > pivot.getName().charAt(index)) {
+                        greater.add(restaurants.get(i));
+                        unsorted = false;
+                    } else if (restaurants.get(i).getName().charAt(index) < pivot.getName().charAt(index)) {
+                        smaller.add(restaurants.get(i));
+                        unsorted = false;
+                    } else {
+                        index++;
+                    }
+                }
+            }
+
+            //Recursive sorting
+            greater = quickSortReverseAlpha(greater);
+            smaller = quickSortReverseAlpha(smaller);
+
+            //Restructure list
+            greater.add(pivot);
+            greater.addAll(smaller);
+            return greater;
+        }
+    }
+
+    //Uses QuickSort algorithm structure to sort parameterised ArrayList alphabetically
+    public static ArrayList<Restaurant> quickSortAlpha(ArrayList<Restaurant> restaurants) {
+        if (restaurants.size() <= 1) {
+            return restaurants;
+        } else {
+            ArrayList<Restaurant> smaller = new ArrayList<>();
+            ArrayList<Restaurant> greater = new ArrayList<>();
+            Restaurant pivot = restaurants.get(restaurants.size() - 1);
+            for (int i = 0; i < restaurants.size() - 1; i++) {
+                boolean unsorted = true;
+                int index = 0;
+                while (unsorted) {
+                    if (restaurants.get(i).getName().charAt(index) < pivot.getName().charAt(index)) {
+                        smaller.add(restaurants.get(i));
+                        unsorted = false;
+                    } else if (restaurants.get(i).getName().charAt(index) > pivot.getName().charAt(index)) {
+                        greater.add(restaurants.get(i));
+                        unsorted = false;
+                    } else {
+                        index++;
+                    }
+                }
+            }
+
+            //Recursive sorting
+            smaller = quickSortAlpha(smaller);
+            greater = quickSortAlpha(greater);
+
+            //Restructure list
             smaller.add(pivot);
             smaller.addAll(greater);
             return smaller;
@@ -90,7 +166,7 @@ public class DataUtility {
         String name = "Holy Heffas";
         int ivId = R.drawable.holyheffa;
         float rating = 4.2f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$$");
         cuisine.add("American");
         cuisine.add("Burgers");
@@ -111,7 +187,7 @@ public class DataUtility {
         String name = "Mary's Newtown";
         int ivId = R.drawable.marysnewtown;
         float rating = 4.4f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$$");
         cuisine.add("American");
         cuisine.add("Burgers");
@@ -128,7 +204,7 @@ public class DataUtility {
         String name = "Watsup Brothers";
         int ivId = R.drawable.watsupbrothers;
         float rating = 4.5f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$");
         cuisine.add("Turkish");
         cuisine.add("Kebab");
@@ -144,7 +220,7 @@ public class DataUtility {
         String name = "El Jannahs - Punchbowl";
         int ivId = R.drawable.eljannahs;
         float rating = 4.3f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$");
         cuisine.add("Lebanese");
         cuisine.add("Chicken");
@@ -161,7 +237,7 @@ public class DataUtility {
         String name = "It's Time for Thai";
         int ivId = R.drawable.tft;
         float rating = 4.8f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$");
         cuisine.add("Thai");
         cuisine.add("Malaysian");
@@ -178,7 +254,7 @@ public class DataUtility {
         String name = "Manpuku Ramen";
         int ivId = R.drawable.manpuku;
         float rating = 4.4f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$$");
         cuisine.add("Japanese");
         cuisine.add("Ramen");
@@ -195,7 +271,7 @@ public class DataUtility {
         String name = "Sakura Fresh Sushi";
         int ivId = R.drawable.sakura;
         float rating = 4.6f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$");
         cuisine.add("Japanese");
         cuisine.add("Sushi");
@@ -212,7 +288,7 @@ public class DataUtility {
         String name = "Red Pepper Bistro";
         int ivId = R.drawable.redpepper;
         float rating = 4.1f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$$");
         cuisine.add("Korean");
         cuisine.add("Chicken");
@@ -229,7 +305,7 @@ public class DataUtility {
         String name = "Jang Ta Bal";
         int ivId = R.drawable.jtb;
         float rating = 4.5f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$$");
         cuisine.add("Korean");
         cuisine.add("K-BBQ");
@@ -246,7 +322,7 @@ public class DataUtility {
         String name = "Marrickville Pork Roll";
         int ivId = R.drawable.porkroll;
         float rating = 4.7f;
-        ArrayList<String> cuisine = new ArrayList();
+        ArrayList<String> cuisine = new ArrayList<>();
         cuisine.add("$");
         cuisine.add("Vietnamese");
         cuisine.add("Bread");

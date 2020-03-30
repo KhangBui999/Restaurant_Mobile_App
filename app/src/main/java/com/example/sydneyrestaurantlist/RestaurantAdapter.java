@@ -7,11 +7,8 @@
 
 package com.example.sydneyrestaurantlist;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +22,6 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
-
-import static android.graphics.Bitmap.createScaledBitmap;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestViewHolder> {
     private ArrayList<Restaurant> mRestaurants;
@@ -45,11 +40,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     //Static RestViewHolder class
     public static class RestViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView mImage;
-        public TextView mName, mLocation, mRating;
-        public ChipGroup mCuisine;
-        public RatingBar mRateBar;
-        public RecyclerViewClickListener mListener;
+        private ImageView mImage;
+        private TextView mName, mLocation, mRating;
+        private ChipGroup mCuisine;
+        private RatingBar mRateBar;
+        private RecyclerViewClickListener mListener;
 
         public RestViewHolder(View v, RecyclerViewClickListener listener) {
             super(v);
@@ -89,13 +84,15 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         Bitmap source = BitmapFactory.decodeResource(holder.mImage.getResources(),
                 restaurant.getIvId(), options); //gets a scaled down Bitmap
 
+        //Formats the rating bar and sets stepSize
+        holder.mRating.setText(String.format("%,.1f", restaurant.getRating()));
+        holder.mRateBar.setRating(restaurant.getRating()); //sets rating value
+        holder.mRateBar.setStepSize(0.1f); //sets how filled the bar is
+
         //Changes the elements of the holder view
         holder.mImage.setImageBitmap(source);
         holder.mName.setText(restaurant.getName());
         holder.mLocation.setText(restaurant.getSuburb());
-        holder.mRating.setText(String.format("%,.1f", restaurant.getRating()));
-        holder.mRateBar.setRating(restaurant.getRating()); //sets rating value
-        holder.mRateBar.setStepSize(0.1f); //sets how filled the bar is
 
         //Add chips based on cuisine ArrayList
         holder.mCuisine.removeAllViews(); //needed to resolve duplication bug

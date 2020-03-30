@@ -41,6 +41,20 @@
             android:layout_height="wrap_content"
             android:text="Lowest Ratings"
             android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_az"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alphabetical (A - Z)"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_za"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alphabetical (Z - A)"
+            android:textSize="16sp" />
     </RadioGroup>
 
 </LinearLayout>

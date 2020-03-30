@@ -7,16 +7,16 @@
 
 package com.example.sydneyrestaurantlist;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.ActionBar;
-import android.content.Intent;
-import android.os.Bundle;
-
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -29,7 +29,8 @@ public class DetailActivity extends AppCompatActivity {
         int position = intent.getIntExtra("POSITION", 0);
         ArrayList<String> nameList = intent.getStringArrayListExtra("NAMES");
 
-        getSupportActionBar().setTitle(null);
+        //Makes ActionBar transparent
+        Objects.requireNonNull(getSupportActionBar()).setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
 
         //Manages the fragment for DetailActivity
