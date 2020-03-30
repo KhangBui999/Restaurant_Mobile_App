@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Khang Bui (z5209606) on 30/03/20 2:06 PM.
+  ~ This is an academic project completed as part of the UNSW course, INFS3634.
+  ~ Copyright (c) 2020. All rights reserved.
+  ~ Last modified 30/03/20 2:06 PM.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/filterbutton"
+        android:icon="@drawable/settings"
+        android:title=""
+        app:showAsAction="always" />
+</menu>

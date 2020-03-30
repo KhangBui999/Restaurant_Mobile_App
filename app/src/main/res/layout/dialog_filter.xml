@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Khang Bui (z5209606) on 30/03/20 2:50 PM.
+  ~ This is an academic project completed as part of the UNSW course, INFS3634.
+  ~ Copyright (c) 2020. All rights reserved.
+  ~ Last modified 30/03/20 2:50 PM.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="16dp"
+        android:text="Sort By..."
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_hr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Highest Ratings"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/rb_lr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lowest Ratings"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+</LinearLayout>

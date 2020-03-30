@@ -103,6 +103,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         for(String cuisine : cuisineList) {
             Chip chip = new Chip(holder.itemView.getContext(), null, R.attr.CustomChipChoiceStyle);
             chip.setText(cuisine);
+            chip.setClickable(false);
             holder.mCuisine.addView(chip);
         }
 

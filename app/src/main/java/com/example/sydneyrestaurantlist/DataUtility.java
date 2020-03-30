@@ -7,12 +7,16 @@
 
 package com.example.sydneyrestaurantlist;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 //Utility class to manage restaurant data
 public class DataUtility {
 
-    public static ArrayList<Restaurant> getRestaurantList() {
+    //Default List
+    public static ArrayList<Restaurant> getDefaultList() {
         ArrayList<Restaurant> restaurants = new ArrayList();
         restaurants.add(getHolyHeffas());
         restaurants.add(getMarysNewtown());
@@ -25,6 +29,60 @@ public class DataUtility {
         restaurants.add(getJTB());
         restaurants.add(getPorkRoll());
         return restaurants;
+    }
+
+    //Uses quick sorting to sort parameterised ArrayList from highest to lowest by rating
+    public static ArrayList<Restaurant> quickSortDescRating(ArrayList<Restaurant> restaurants) {
+        if(restaurants.size() <= 1){
+            return restaurants; //list does not need to be sorted if there is one item
+        }
+        else {
+            ArrayList<Restaurant> smaller = new ArrayList<>();
+            ArrayList<Restaurant> greater = new ArrayList<>();
+            Restaurant pivot = restaurants.get(restaurants.size()-1); //pivot item
+            for(int i=0; i < restaurants.size()-1; i++) {
+                if(restaurants.get(i).getRating() > pivot.getRating()){
+                    greater.add(restaurants.get(i));
+                }
+                else {
+                    smaller.add(restaurants.get(i));
+                }
+            }
+            greater = quickSortDescRating(greater);
+            smaller = quickSortDescRating(smaller);
+
+            //Restructures the ArrayList
+            greater.add(pivot);
+            greater.addAll(smaller);
+            return greater;
+        }
+    }
+
+    //Uses quick sorting to sort parameterised ArrayList from lowest to highest by rating
+    public static ArrayList<Restaurant> quickSortAscRating(ArrayList<Restaurant> restaurants) {
+        if(restaurants.size() <= 1){
+            return restaurants;
+        }
+        else {
+            ArrayList<Restaurant> smaller = new ArrayList<>();
+            ArrayList<Restaurant> greater = new ArrayList<>();
+            Restaurant pivot = restaurants.get(restaurants.size()-1); //pivot item
+            for(int i=0; i < restaurants.size()-1; i++) {
+                if(restaurants.get(i).getRating() < pivot.getRating()){
+                    smaller.add(restaurants.get(i));
+                }
+                else {
+                    greater.add(restaurants.get(i));
+                }
+            }
+            smaller = quickSortAscRating(smaller);
+            greater = quickSortAscRating(greater);
+
+            //Restructures the ArrayList
+            smaller.add(pivot);
+            smaller.addAll(greater);
+            return smaller;
+        }
     }
 
     //The following methods return a certain restaurant
@@ -203,7 +261,7 @@ public class DataUtility {
 
     //Searches ArrayList and returns a restaurant based on name result
     public static Restaurant searchRestaurant(String name) {
-        ArrayList<Restaurant> restaurants = getRestaurantList();
+        ArrayList<Restaurant> restaurants = getDefaultList();
         Restaurant result = null;
         for (Restaurant restaurant : restaurants) {
             if(restaurant.getName().equals(name)){

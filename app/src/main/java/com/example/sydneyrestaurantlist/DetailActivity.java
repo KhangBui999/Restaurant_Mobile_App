@@ -16,6 +16,8 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -25,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int position = intent.getIntExtra("POSITION", 0);
+        ArrayList<String> nameList = intent.getStringArrayListExtra("NAMES");
 
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //includes back button
@@ -35,16 +38,17 @@ public class DetailActivity extends AppCompatActivity {
         Fragment myFragment = new DetailFragment();
         Bundle arguments = new Bundle();
         arguments.putInt("POSITION", position);
-        arguments.putString("TRANSITION", "transition" + position);
+        arguments.putStringArrayList("NAMES", nameList);
         myFragment.setArguments(arguments);
         myTransaction.replace(R.id.scrollView, myFragment);
         myTransaction.commit();
     }
 
-    //Allows the back button to navigate to the previous Activity
+    //Allows the back button to navigate to MainActivity
     @Override
     public boolean onSupportNavigateUp(){
         finish();
+        this.overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out); //transition
         return true;
     }
 

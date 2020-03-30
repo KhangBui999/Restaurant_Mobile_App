@@ -45,9 +45,9 @@ public class DetailFragment extends Fragment {
         //Retrieves arguments from the FragmentManager in DetailActivity
         Bundle arguments = getArguments();
         int position = arguments.getInt("POSITION");
-        String transitionName = arguments.getString("TRANSITION");
+        ArrayList<String> nameList = arguments.getStringArrayList("NAMES");
 
-        final Restaurant restaurant = DataUtility.getRestaurantList().get(position);
+        final Restaurant restaurant = DataUtility.searchRestaurant(nameList.get(position));
 
         //Links XML elements to their respective control variable
         ImageView mImage = v.findViewById(R.id.imageView);
