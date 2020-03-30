@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         //Changes title of the action bar
         getSupportActionBar().setTitle("Sydney Restaurants Guide");
 
+        //Checks if device is in wideMode by seeing if the scrollContainer exists (wideMode element only)
+        if(findViewById(R.id.scrollContainer) == null){
+            wideMode = false;
+        }
+        else {
+            wideMode = true;
+        }
+
         mStatus = findViewById(R.id.subheading);
         mStatus.setText("Showing 10 (of 10) - Sorted By Highest Rating");
 
@@ -63,7 +74,22 @@ public class MainActivity extends AppCompatActivity {
         listener = new RestaurantAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
-                launchDetailActivity(position);
+                if(wideMode){
+                    //Tablet (wide mode) has a dual pane view via a fragment in the scrollContainer
+                    FragmentManager myManager = getSupportFragmentManager();
+                    FragmentTransaction myTransaction = myManager.beginTransaction();
+                    Fragment myFragment = new DetailFragment();
+                    Bundle arguments = new Bundle();
+                    arguments.putInt("POSITION", position);
+                    arguments.putStringArrayList("NAMES", nameList);
+                    myFragment.setArguments(arguments);
+                    myTransaction.replace(R.id.scrollContainer, myFragment);
+                    myTransaction.commit();
+                }
+                else {
+                    //Handheld launches another activity
+                    launchDetailActivity(position);
+                }
             }
         };
 
@@ -120,20 +146,20 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //Todo: clean up refreshList method and improve readability
-    //Refreshes List when options are applied
+    //Todo: for portfolio purposes, clean up refreshList method and improve readability
+    //Refreshes RecyclerView when options are applied
     private void refreshList(int rbId) {
         switch(rbId){
             case R.id.rb_hr:
-                list = new ArrayList<>();
+                list = new ArrayList<>(); //Clears array list
                 list = DataUtility.quickSortDescRating(DataUtility.getDefaultList());
-                nameList = new ArrayList<>();
+                nameList = new ArrayList<>(); //Clears nameList
                 for(Restaurant r : list) {
-                    nameList.add(r.getName());
+                    nameList.add(r.getName()); //matches nameList to new ArrayList
                 }
-                mAdapter = new RestaurantAdapter(list, listener);
-                mRecyclerView.setAdapter(mAdapter);
-                mRecyclerView.startLayoutAnimation();
+                mAdapter = new RestaurantAdapter(list, listener); //resets Adapter
+                mRecyclerView.setAdapter(mAdapter); //resets Adapter
+                mRecyclerView.startLayoutAnimation(); //starts Animation
                 mStatus.setText("Showing 10 (of 10) - Sorted By Highest Rating");
                 break;
             case R.id.rb_lr:
